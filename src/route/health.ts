@@ -1,8 +1,8 @@
-import { Router } from "express";
+import { Request, Router } from "express";
 
 export const router = Router();
 
-router.get('/health',(req, res)=>{
+router.get('/health',(req:Request, res)=>{
     res.send({message:'OK'});
 
 })
