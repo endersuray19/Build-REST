@@ -10,6 +10,7 @@ const app = (0, express_1.default)();
 const port = 3000;
 app.use(middlewares_1.addTimestamp);
 app.use(middlewares_1.logger);
+app.use(middlewares_1.errorHandler);
 app.use('/health', route_1.healhRouter);
 app.use('/users', route_1.usersRouter);
 app.listen(port, () => {
