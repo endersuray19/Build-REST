@@ -16,3 +16,27 @@ exports.router.get('/users/:id', middlewares_1.logger, middlewares_1.logger, (re
         result: 1,
     });
 });
+exports.router.post('/', (req, res) => {
+    const { operator, operator1, operator2 } = req.body;
+    let result;
+    switch (operator) {
+        case '+':
+            result = operator1 + operator2;
+            break;
+        case '-':
+            result = operator1 - operator2;
+            break;
+        case '*':
+            result = operator1 * operator2;
+            break;
+        case '/':
+            result = operator1 / operator2;
+            break;
+    }
+    console.log(req.body);
+    res.send({
+        message: 'Create a User',
+        timestamp: req.timestamp,
+        result,
+    });
+});

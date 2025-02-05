@@ -1,5 +1,6 @@
 import {Request, Router} from "express";
 import { logger } from "../middlewares";
+import { UserRequestBody } from "../types";
 
 export const router = Router();
 
@@ -17,3 +18,28 @@ router.get('/users/:id', logger, logger,(req:Request, res)=>{
     result:1,
   });
 });
+router.post('/',(req:Request<{},any,UserRequestBody>, res)=>{
+
+  const {operator, operator1, operator2} = req.body;
+  let result: number|string;
+  switch(operator){
+    case '+':
+      result = operator1 + operator2;
+      break;
+    case '-':
+      result = operator1 - operator2;
+      break;
+    case '*':
+      result = operator1 * operator2;
+      break;
+    case '/':
+      result = operator1 / operator2;
+      break;
+  }
+  console.log(req.body);
+  res.send({
+    message:'Create a User',
+    timestamp: req.timestamp,
+    result,
+  })
+})

@@ -9,6 +9,7 @@ app.use(addTimestamp);
 app.use(logger);
 app.use(errorHandler);
 
+app.use(express.json());
 app.use('/health',healhRouter);
 app.use('/users',usersRouter);
 
