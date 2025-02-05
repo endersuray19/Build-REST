@@ -16,7 +16,7 @@ exports.router.get('/users/:id', middlewares_1.logger, middlewares_1.logger, (re
         result: 1,
     });
 });
-exports.router.post('/', (req, res) => {
+exports.router.post('/', middlewares_1.validateUser, (req, res) => {
     const { operator, operator1, operator2 } = req.body;
     let result;
     switch (operator) {

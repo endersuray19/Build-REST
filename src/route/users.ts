@@ -1,5 +1,5 @@
 import {Request, Router} from "express";
-import { logger } from "../middlewares";
+import { logger, validateUser } from "../middlewares";
 import { UserRequestBody } from "../types";
 
 export const router = Router();
@@ -18,7 +18,7 @@ router.get('/users/:id', logger, logger,(req:Request, res)=>{
     result:1,
   });
 });
-router.post('/',(req:Request<{},any,UserRequestBody>, res)=>{
+router.post('/',validateUser,(req:Request<{},any,UserRequestBody>, res)=>{
 
   const {operator, operator1, operator2} = req.body;
   let result: number|string;
